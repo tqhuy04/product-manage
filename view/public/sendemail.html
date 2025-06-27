@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Gửi Email</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="email-container">
+        <h1>Gửi Email</h1>
+
+        <form id="emailForm">
+            <label for="subject">Tiêu đề (tên người dùng):</label>
+            <input type="text" id="subject" name="subject" readonly placeholder="Tự động từ tên người dùng">
+
+            <label for="to">Người nhận (Email):</label>
+            <input type="email" id="to" name="to" placeholder="Email người nhận" required>
+
+            <label for="body">Nội dung:</label>
+            <textarea id="body" name="body" rows="4" placeholder="Nội dung email..." required></textarea>
+
+            <button type="submit">Gửi Email</button>
+        </form>
+    </div>
+
+    <script src="./js/sendEmail.js"></script>
+</body>
+</html>

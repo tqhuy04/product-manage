@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Đăng ký</h1>
+
+        <form id="register-form">
+            <label for="username">TÊN NGƯỜI DÙNG</label>
+            <input type="text" name="username" placeholder="Tên người dùng" required>
+
+            <label for="email">EMAIL</label>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <label for="password">MẬT KHẨU</label>
+            <input type="password" name="password" placeholder="Mật khẩu" required>
+
+            <div class="social-login">
+                <button type="button" class="social facebook"></button>
+                <button type="button" class="social google"></button>
+            </div>
+
+            <!-- Dùng type="button" để xử lý bằng JS -->
+            <button type="submit" id="register-btn" class="login-btn">Đăng ký</button>
+
+            <p style="text-align: center; margin-top: 10px;">
+                Đã có tài khoản? <a href="./login.html">Đăng nhập ngay</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="./js/register.js"></script>
+</body>
+
+</html>

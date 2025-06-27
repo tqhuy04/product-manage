@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Đăng nhập</h1>
+
+        <!-- Form đăng nhập bằng tài khoản nội bộ -->
+        <form id="login-form">
+            <label for="username">TÊN NGƯỜI DÙNG</label>
+            <input type="text" name="username" placeholder="Tên người dùng" required>
+
+            <label for="password">MẬT KHẨU</label>
+            <input type="password" name="password" placeholder="Mật khẩu" required>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">GHI NHỚ ĐĂNG NHẬP</label>
+            </div>
+
+            <button type="submit" class="login-btn">Đăng nhập</button>
+        </form>
+
+        <!-- Đăng nhập qua mạng xã hội -->
+        <div class="social-login">
+            <hr>
+            <button id="google-login" class="social google">
+                Đăng nhập bằng Google
+            </button>
+        </div>
+
+
+        <!-- Chuyển sang trang đăng ký -->
+        <p style="text-align: center; margin-top: 10px;">
+            Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a>
+        </p>
+    </div>
+
+
+    <script src="./js/login.js"></script>
+</body>
+
+</html>
