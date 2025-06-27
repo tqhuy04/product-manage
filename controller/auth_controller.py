@@ -7,6 +7,52 @@ from model.user import User
 from util.auth import get_password_hash, verify_password, create_access_token
 import os
 
+async def handle_google_callback(request: Request, db: Session, oauth):
+    token = await oauth.google.authorize_access_token(request)
+    resp = await oauth.google.get("userinfo", token=token)
+    user_info = resp.json()
+
+    email = user_info.get("email")
+    name = user_info.get("name")
+
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        user = User(
+            username=name,
+            email=email,
+            hashed_password="google_oauth",
+            role="user"
+        )
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+
+    access_token = create_access_token(data={"sub": user.username})
+    return RedirectResponse(url=f"/sendemail.html?token={access_token}")
+
+async def handle_facebook_callback(request: Request, db: Session, oauth):
+    token = await oauth.facebook.authorize_access_token(request)
+    resp = await oauth.facebook.get("me?fields=id,name,email", token=token)
+    user_info = resp.json()
+
+    email = user_info.get("email")
+    name = user_info.get("name")
+
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        user = User(
+            username=name,
+            email=email,
+            hashed_password="facebook_oauth",
+            role="user"
+        )
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+
+    access_token = create_access_token(data={"sub": user.username})
+    return RedirectResponse(url=f"/sendemail.html?token={access_token}")
+
 def register_user(user, db: Session):
     if db.query(User).filter(User.username == user.username).first():
         raise HTTPException(status_code=400, detail="Tên đăng nhập đã tồn tại")

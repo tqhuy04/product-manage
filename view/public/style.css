@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-/* ========= Login/Register Container ========= */
+/* ========= Container ========= */
 .login-container,
 .email-container {
     background-color: #ffffff;
@@ -26,6 +26,7 @@ h1 {
     margin-bottom: 24px;
 }
 
+/* ========= Form Elements ========= */
 label {
     display: block;
     margin-top: 12px;
@@ -81,26 +82,13 @@ textarea {
     background-color: #ccc;
 }
 
-/* Facebook circular button */
-.social.facebook {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: #3b5998;
-    background-image: url("https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
-    cursor: pointer;
-}
-
-/* Google full-width button */
+/* === Google full-width button === */
 .social.google {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    width: 100%;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -128,7 +116,38 @@ textarea {
     height: 20px;
 }
 
-/* ========= Other ========= */
+/* === Facebook circular button === */
+
+.social.facebook {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b5998;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.social.facebook::before {
+    content: "";
+    display: inline-block;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ========= Remember Me & Links ========= */
 .remember-me {
     margin-top: 10px;
     display: flex;

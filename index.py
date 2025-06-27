@@ -23,7 +23,7 @@ app.add_middleware(
 
 app.add_middleware(
     SessionMiddleware,
-    secret_key="your-secret-key",
+    secret_key="qpouttertyuiop",
 )
 
 #  Đường dẫn tuyệt đối đến thư mục 'view/public'
