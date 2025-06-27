@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!token) {
         alert("Vui lòng đăng nhập trước.");
-        window.location.href = "/login.html"; 
+        window.location.href = "/login.html"; // ✅ sửa đường dẫn vì bạn đã mount public/
         return;
     }
 
@@ -50,14 +50,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const result = await res.json();
             if (res.ok) {
-                alert(result.result || " Email đã được gửi thành công!");
+                alert(result.result || "📧 Email đã được gửi thành công!");
                 form.reset(); // Xóa nội dung form
             } else {
-                alert("Lỗi gửi email: " + (result.detail || "Không rõ nguyên nhân"));
+                alert("❌ Lỗi gửi email: " + (result.detail || "Không rõ nguyên nhân"));
             }
         } catch (err) {
             console.error("Lỗi:", err);
-            alert("Gửi email thất bại do lỗi hệ thống.");
+            alert("⚠️ Gửi email thất bại do lỗi hệ thống.");
         }
     });
 });

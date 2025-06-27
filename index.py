@@ -30,8 +30,9 @@ app.add_middleware(
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "view", "public")
 
-# Mount static files
-app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
-
 # Routers
 app.include_router(auth.router)
+# Mount static files
+app.mount("/public", StaticFiles(directory=STATIC_DIR, html=True), name="static")
+
+

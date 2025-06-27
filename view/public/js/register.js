@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 alert("🎉 Đăng ký thành công!");
-                window.location.href = "/login.html"; // 
+                window.location.href = "/login.html"; // ❗ bạn đang mount /public làm root
             } else {
-                alert(" Lỗi đăng ký: " + (data.detail || "Không rõ nguyên nhân"));
+                alert("❌ Lỗi đăng ký: " + (data.detail || "Không rõ nguyên nhân"));
             }
         } catch (err) {
             console.error("⚠️ Lỗi kết nối:", err);

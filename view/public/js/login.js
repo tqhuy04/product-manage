@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("login-form");
     const googleLoginBtn = document.getElementById("google-login");
-    const facebookLoginBtn = document.getElementById("facebook-login");
+    const FaceBookLoginBtn = document.getElementById("facebook-login");
 
     //  Xử lý đăng nhập bằng username/password
     if (form) {
@@ -42,15 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Xử lý nút đăng nhập bằng Google
+    // 🔗 Xử lý nút đăng nhập bằng Google
     if (googleLoginBtn) {
         googleLoginBtn.addEventListener("click", () => {
             window.location.href = "/auth/google-login";
         });
     }
-    if (facebookLoginBtn) {
-    facebookLoginBtn.addEventListener("click", () => {
-        window.location.href = "/auth/facebook-login";
-    });
-}
 });
