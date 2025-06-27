@@ -48,4 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "/auth/google-login";
         });
     }
+    if (FaceBookLoginBtn) {
+        FaceBookLoginBtn.addEventListener("click",()=>{
+            window.location.href = "/auth/facebook-login"
+        });
+        
+    }
 });

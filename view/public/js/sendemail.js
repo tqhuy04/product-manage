@@ -1,13 +1,22 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const token = localStorage.getItem("token");
+    // Bước 1: Lấy token từ URL (nếu có) và lưu vào localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get("token");
+    if (urlToken) {
+        localStorage.setItem("token", urlToken);
+        // Xóa token khỏi URL để gọn gàng
+        window.history.replaceState({}, document.title, "/sendemail.html");
+    }
 
+    // Bước 2: Lấy token từ localStorage
+    const token = localStorage.getItem("token");
     if (!token) {
         alert("Vui lòng đăng nhập trước.");
-        window.location.href = "/login.html"; // ✅ sửa đường dẫn vì bạn đã mount public/
+        window.location.href = "/login.html";
         return;
     }
 
-    // Giải mã token để lấy username (không xác thực được hạn dùng token)
+    // Bước 3: Giải mã token để lấy username
     let username = "";
     try {
         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -51,13 +60,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             const result = await res.json();
             if (res.ok) {
                 alert(result.result || "📧 Email đã được gửi thành công!");
-                form.reset(); // Xóa nội dung form
+                form.reset();
             } else {
-                alert("❌ Lỗi gửi email: " + (result.detail || "Không rõ nguyên nhân"));
+                alert("Lỗi gửi email: " + (result.detail || "Không rõ nguyên nhân"));
             }
         } catch (err) {
             console.error("Lỗi:", err);
-            alert("⚠️ Gửi email thất bại do lỗi hệ thống.");
+            alert("Gửi email thất bại do lỗi hệ thống.");
         }
     });
 });
