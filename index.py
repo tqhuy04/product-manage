@@ -3,9 +3,9 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-
+from model import product, category
 from database import engine, Base
-from routers import auth, email
+from routers import auth, email, admin_product, client_product
 
 # Khởi tạo DB nếu chưa có
 Base.metadata.create_all(bind=engine)
@@ -32,6 +32,9 @@ STATIC_DIR = os.path.join(BASE_DIR, "view", "public")
 
 # Routers
 app.include_router(auth.router)
+app.include_router(admin_product.router)
+app.include_router(client_product.router)
+
 app.include_router(email.router, prefix="/api", tags=["Email"])
 # Mount static files
 app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
