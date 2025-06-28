@@ -65,3 +65,15 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
 @router.post("/login", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     return auth_controller.login_user(form_data, db)
+
+@router.get("/me", response_model=UserOut)
+def get_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
+# ------------------ API chỉ cho Admin ------------------
+
+@router.get("/admin-only")
+def get_admin_data(current_user: User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Không đủ quyền truy cập")
+    return {"message": "Bạn là admin, truy cập thành công!"}
