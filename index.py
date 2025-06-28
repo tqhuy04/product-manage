@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from model import product, category
 from database import engine, Base
 from routers import auth, email, admin_product, client_product
+from routers import client_categories, admin_categories
 
 # Khởi tạo DB nếu chưa có
 Base.metadata.create_all(bind=engine)
@@ -34,6 +35,8 @@ STATIC_DIR = os.path.join(BASE_DIR, "view", "public")
 app.include_router(auth.router)
 app.include_router(admin_product.router)
 app.include_router(client_product.router)
+app.include_router(client_categories.router)
+app.include_router(admin_categories.router)
 
 app.include_router(email.router, prefix="/api", tags=["Email"])
 # Mount static files

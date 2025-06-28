@@ -4,6 +4,7 @@ from database import get_db
 from controller import product_controller
 from schemas.product import Product
 
+
 router = APIRouter(prefix="/products", tags=["Client Products"])
 
 @router.get("/", response_model=list[Product])
