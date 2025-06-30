@@ -7,7 +7,8 @@ from model import product, category
 from database import engine, Base
 from routers import auth, email
 from routers.admin import ad_product, ad_categories
-from routers.client import categories, product
+from routers.client import categories, product, cart
+
 
 # Khởi tạo DB nếu chưa có
 Base.metadata.create_all(bind=engine)
@@ -38,6 +39,7 @@ app.include_router(ad_product.router)
 app.include_router(product.router)
 app.include_router(ad_categories.router)
 app.include_router(categories.router)
+app.include_router(cart.router)
 
 app.include_router(email.router, prefix="/api", tags=["Email"])
 # Mount static files
