@@ -11,4 +11,4 @@ class Product(Base):
     quantity = Column(Integer)
     categorie_id = Column(Integer, ForeignKey("categories.id"))
     img = Column(String(255), nullable=True)
-    # cart_items = relationship("CartItem", back_populates="product", cascade="all, delete")
+    cart_items = relationship("CartItem", back_populates="product", cascade="all, delete")
