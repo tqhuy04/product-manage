@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.ext.declarative import declarative_base
 
 #  Chuỗi kết nối MySQL với PyMySQL
-sql = "mysql+pymysql://root:@localhost:3307/product-management"
+sql = "mysql+pymysql://root:130404@localhost:3306/product-management"
 
 #  Tạo engine kết nối
 engine = create_engine(sql, echo=True)  # thêm echo=True để log SQL truy vấn

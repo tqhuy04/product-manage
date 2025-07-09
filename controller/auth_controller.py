@@ -61,11 +61,12 @@ def register_user(user, db: Session):
 
     hashed_password = get_password_hash(user.password)
     new_user = User(
-        username=user.username,
-        email=user.email,
-        hashed_password=hashed_password,
-        role="user"
-    )
+    username=user.username,
+    email=user.email,
+    hashed_password=hashed_password,
+    role=user.role  # ← Lấy từ request
+)
+
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
